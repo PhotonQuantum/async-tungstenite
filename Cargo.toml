@@ -18,12 +18,15 @@ default = []
 async-std-runtime = ["async-std"]
 tokio-runtime = ["tokio"]
 gio-runtime = ["gio", "glib"]
+nuclei-runtime = ["nuclei"]
 async-tls = ["real-async-tls"]
 async-native-tls = ["async-std-runtime", "real-async-native-tls", "tungstenite/native-tls"]
 tokio-native-tls = ["tokio-runtime", "real-tokio-native-tls", "real-native-tls", "tungstenite/native-tls"]
 tokio-rustls-webpki-roots = ["tokio-runtime", "real-tokio-rustls", "webpki-roots", "tungstenite/__rustls-tls"]
 tokio-rustls-native-certs = ["tokio-runtime", "real-tokio-rustls", "rustls-native-certs", "tungstenite/__rustls-tls"]
 tokio-openssl = ["tokio-runtime", "real-tokio-openssl", "openssl"]
+nuclei-native-tls = ["nuclei-runtime", "real-async-native-tls", "tungstenite/native-tls"]
+nuclei-rustls = ["nuclei-runtime", "async-tls"]
 verbose-logging = []
 
 [package.metadata.docs.rs]
@@ -98,12 +101,18 @@ version = "0.14"
 optional = true
 version = "0.14"
 
+[dependencies.nuclei]
+optional = true
+version = "0.1"
+default-features = false
+
 [dev-dependencies]
 futures = "0.3"
 url = "2.0.0"
 env_logger = "0.9"
 async-std = { version = "1.0", features = ["attributes", "unstable"] }
 tokio = { version = "1.0", features = ["full"] }
+nuclei = { version = "0.1", features = ["bastion", "iouring"] }
 
 [[example]]
 name = "autobahn-client"

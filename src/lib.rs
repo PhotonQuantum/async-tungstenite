@@ -90,6 +90,8 @@ pub mod gio;
 pub mod tokio;
 #[cfg(feature = "real-async-native-tls")]
 pub mod async_native_tls;
+#[cfg(feature = "nuclei")]
+pub mod nuclei;
 
 use tungstenite::protocol::CloseFrame;
 
@@ -372,7 +374,8 @@ where
     feature = "async-tls",
     feature = "async-std-runtime",
     feature = "tokio-runtime",
-    feature = "gio-runtime"
+    feature = "gio-runtime",
+    feature = "nuclei-runtime"
 ))]
 /// Get a domain from an URL.
 #[inline]
@@ -390,7 +393,8 @@ pub(crate) fn domain(
 #[cfg(any(
     feature = "async-std-runtime",
     feature = "tokio-runtime",
-    feature = "gio-runtime"
+    feature = "gio-runtime",
+    feature = "nuclei-runtime",
 ))]
 /// Get the port from an URL.
 #[inline]
