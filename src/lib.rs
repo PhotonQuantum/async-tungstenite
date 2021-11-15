@@ -88,6 +88,8 @@ pub mod async_tls;
 pub mod gio;
 #[cfg(feature = "tokio-runtime")]
 pub mod tokio;
+#[cfg(feature = "real-async-native-tls")]
+pub mod async_native_tls;
 
 use tungstenite::protocol::CloseFrame;
 
